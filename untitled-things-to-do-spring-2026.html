@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untitled — Things To Do (Spring 2026)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown-darkest: #1f0f08;
+  --brown-dark: #2a1610;
+  --brown-mid: #3d220e;
+  --brown-line: rgba(42, 22, 16, 0.85);
+  --cream: #e8dcc6;
+  --cream-card: #f0e6cf;
+  --cream-light: #f5edd9;
+  --teal: #2d6862;
+  --teal-dark: #234e4a;
+  --text-dark: #2a1610;
+  --text-soft: #4a3625;
+  --text-on-dark: #f0e6cf;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+
+.serif {
+  font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+}
+
+.serif-italic {
+  font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+}
+
+/* ================ LAYOUT HELPERS ================ */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.divider-brown {
+  height: 1px;
+  background: var(--brown-line);
+  width: 100%;
+}
+
+.divider-thick {
+  height: 18px;
+  background: var(--brown-dark);
+  width: 100%;
+}
+
+/* ================ TOP NAV ================ */
+.topbar {
+  background: var(--brown-darkest);
+  color: var(--text-on-dark);
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar-left, .topbar-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-right { justify-content: flex-end; gap: 8px; }
+
+.topbar-logo-mark {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cream);
+  display: grid;
+  place-items: center;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--brown-dark);
+  font-size: 16px;
+  border: 1px solid rgba(240, 230, 207, 0.3);
+}
+
+.topbar-brand {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.heart {
+  display: inline-block;
+  margin-left: 6px;
+  color: #b85c4d;
+}
+
+.menu-icon {
+  width: 26px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+}
+.menu-icon span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  background: var(--text-on-dark);
+  width: 100%;
+}
+.menu-icon span:nth-child(1) { top: 0; }
+.menu-icon span:nth-child(2) { top: 8px; width: 70%; right: 0; }
+.menu-icon span:nth-child(3) { top: 16px; }
+
+/* ================ HERO ================ */
+.hero {
+  background: var(--brown-dark);
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--brown-line);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(135deg, rgba(31,15,8,0.55) 0%, rgba(31,15,8,0.7) 100%),
+    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&auto=format');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.hero-side-tag {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: rotate(-90deg) translateX(50%);
+  transform-origin: left center;
+  color: var(--text-on-dark);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  white-space: nowrap;
+  z-index: 3;
+  opacity: 0.7;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+  padding: 80px 64px;
+}
+
+.hero-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: 1.0;
+  color: var(--text-on-dark);
+  letter-spacing: -0.01em;
+}
+
+.door-hanger {
+  width: 220px;
+  background: linear-gradient(180deg, #f5edd9 0%, #e8dcc6 100%);
+  border-radius: 14px 14px 14px 14px;
+  padding: 60px 24px 32px;
+  text-align: center;
+  position: relative;
+  box-shadow:
+    0 30px 50px rgba(0,0,0,0.5),
+    inset 0 -10px 30px rgba(0,0,0,0.06);
+  transform: rotate(2deg);
+}
+
+.door-hanger::before {
+  content: "";
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: transparent;
+  border: 18px solid var(--cream-light);
+  border-bottom: 18px solid transparent;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+.door-hanger-rod {
+  position: absolute;
+  top: 8px;
+  left: -50px;
+  width: 320px;
+  height: 16px;
+  background: linear-gradient(180deg, #6b3a1f 0%, #3d1d0e 100%);
+  border-radius: 8px;
+  z-index: -1;
+}
+
+.door-hanger-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 0.15em;
+  color: var(--brown-dark);
+  margin-bottom: 18px;
+}
+
+.door-hanger-message {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  line-height: 1.15;
+  color: var(--brown-mid);
+  margin-bottom: 18px;
+}
+
+.door-hanger-tagline {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.3;
+}
+
+/* ================ SECTION DIVIDER BAR ================ */
+.section-divider-bar {
+  background: var(--brown-dark);
+  color: var(--text-on-dark);
+  text-align: center;
+  padding: 14px 24px;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+}
+
+/* ================ ON-PROPERTY VENUE ROW ================ */
+.venue {
+  background: var(--cream);
+  padding: 56px 0 0;
+}
+
+.venue-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.venue-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.time-pill {
+  display: inline-block;
+  background: var(--cream-card);
+  border: 1px solid var(--brown-line);
+  padding: 8px 22px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--text-dark);
+  border-radius: 2px;
+}
+
+.time-pill-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.venue-body {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 0;
+  border-top: 1px solid var(--brown-line);
+  border-bottom: 1px solid var(--brown-line);
+}
+
+.venue-body.reversed {
+  grid-template-columns: 0.7fr 1.3fr;
+}
+
+.venue-photo {
+  aspect-ratio: 16/10;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-right: 1px solid var(--brown-line);
+}
+
+.venue-body.reversed .venue-photo {
+  border-right: none;
+  border-left: 1px solid var(--brown-line);
+  order: 2;
+}
+
+.venue-info {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--cream-card);
+}
+
+.venue-info-text {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.venue-arrows {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  font-size: 20px;
+  color: var(--text-dark);
+}
+.venue-arrows span { cursor: pointer; opacity: 0.4; }
+.venue-arrows span:hover { opacity: 1; }
+
+/* ================ SEASONAL EVENTS ================ */
+.events-section {
+  background: var(--cream);
+  padding: 64px 0 80px;
+}
+
+.events-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.events-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.events-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(36px, 4.5vw, 52px);
+  color: var(--text-dark);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--brown-line);
+  border-bottom: 1px solid var(--brown-line);
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 20px;
+  padding: 22px 28px;
+  align-items: center;
+  border-bottom: 1px solid var(--brown-line);
+  border-right: 1px solid var(--brown-line);
+  background: var(--cream);
+  transition: background 0.2s;
+}
+
+.event-row:nth-child(even) { border-right: none; }
+.event-row:hover { background: var(--cream-card); }
+
+.event-date {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--brown-dark);
+  line-height: 1.1;
+  border-right: 1px solid var(--brown-line);
+  padding-right: 16px;
+}
+
+.event-date small {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+
+.event-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-name {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.event-meta {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+}
+
+.event-time {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* ================ DARK BAND CATEGORY (FRENCH FEASTS-STYLE) ================ */
+.dark-band {
+  background: var(--brown-dark);
+  color: var(--text-on-dark);
+  padding: 0;
+}
+
+.dark-band-title {
+  text-align: center;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(28px, 3.5vw, 36px);
+  padding: 22px 24px;
+  letter-spacing: 0.04em;
+}
+
+.dark-band-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid rgba(240, 230, 207, 0.15);
+}
+
+.dark-band-grid > div {
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(240, 230, 207, 0.12);
+  border-right: 1px solid rgba(240, 230, 207, 0.12);
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+
+.dark-band-grid > div:nth-child(2n) { border-right: none; }
+.dark-band-grid > div:nth-last-child(-n+2) { border-bottom: none; }
+
+/* ================ MULTI-COLUMN BLOCK (BRUNCH/DRINKS/DINNER STYLE) ================ */
+.multi-block {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border-top: 1px solid var(--brown-line);
+  border-bottom: 1px solid var(--brown-line);
+  background: var(--cream);
+}
+
+.multi-block-left {
+  padding: 32px 28px;
+  border-right: 1px solid var(--brown-line);
+  background: var(--cream);
+}
+
+.multi-block-right {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.multi-block-section {
+  border-bottom: 1px solid var(--brown-line);
+}
+
+.multi-block-section:last-child { border-bottom: none; }
+
+.multi-block-section-header {
+  background: var(--brown-dark);
+  color: var(--text-on-dark);
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 24px;
+  padding: 12px 28px;
+  letter-spacing: 0.04em;
+}
+
+.multi-block-section-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  background: var(--cream);
+}
+
+.multi-block-section-body > div {
+  padding: 12px 28px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--text-dark);
+}
+
+.multi-block-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 28px;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.multi-block-list {
+  list-style: none;
+}
+
+.multi-block-list li {
+  padding: 4px 0;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+/* ================ FOUR-COL CATEGORY GRID (THERE) ================ */
+.there-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--brown-line);
+  border-bottom: 1px solid var(--brown-line);
+}
+
+.there-card {
+  background: var(--cream-card);
+  padding: 32px 32px;
+  border-right: 1px solid var(--brown-line);
+  border-bottom: 1px solid var(--brown-line);
+}
+
+.there-card:nth-child(2n) { border-right: none; }
+
+.there-card-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 26px;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+
+.there-card-list {
+  list-style: none;
+}
+
+.there-card-list li {
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--text-dark);
+  letter-spacing: 0.02em;
+}
+
+.there-card-list li em {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 13px;
+  margin-left: 4px;
+}
+
+/* ================ TOURS SECTION ================ */
+.tours {
+  background: var(--cream);
+  padding: 56px 0;
+  text-align: center;
+  border-top: 1px solid var(--brown-line);
+}
+
+.tours-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.tours-list {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.tours-list span {
+  position: relative;
+  padding: 0 8px;
+}
+
+.tours-cta {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--text-soft);
+}
+.tours-cta a {
+  color: var(--brown-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ================ "BETTER IN PERSON" CTA ================ */
+.in-person {
+  text-align: center;
+  padding: 80px 24px;
+  background: var(--cream);
+  border-top: 1px solid var(--brown-line);
+}
+
+.in-person-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--cream-card);
+  border: 1px solid var(--brown-line);
+  display: inline-grid;
+  place-items: center;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  margin-bottom: 24px;
+  color: var(--brown-dark);
+}
+
+.in-person-text {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+
+.btn-outline-dark {
+  display: inline-block;
+  border: 1px solid var(--brown-dark);
+  background: transparent;
+  color: var(--brown-dark);
+  padding: 12px 32px;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline-dark:hover {
+  background: var(--brown-dark);
+  color: var(--cream);
+}
+
+/* ================ TEAL BOOK CTA ================ */
+.book-cta {
+  background: var(--teal);
+  color: var(--text-on-dark);
+  padding: 64px 0;
+  text-align: center;
+}
+
+.book-cta-text {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.book-cta-btn {
+  display: inline-block;
+  border: 1px solid var(--text-on-dark);
+  background: transparent;
+  color: var(--text-on-dark);
+  padding: 14px 40px;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.book-cta-btn:hover { background: rgba(255,255,255,0.1); }
+
+/* ================ FOOTER ================ */
+.footer-main {
+  background: var(--teal);
+  color: var(--text-on-dark);
+  padding: 48px 0 24px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+.footer-col h4 {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.footer-col p,
+.footer-col a {
+  font-size: 13px;
+  color: var(--text-on-dark);
+  line-height: 1.7;
+  text-decoration: none;
+  display: block;
+}
+
+.footer-col a:hover { opacity: 0.7; }
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  background: var(--teal-dark);
+  color: var(--text-on-dark);
+  margin-top: 32px;
+}
+
+/* ================ RESPONSIVE ================ */
+@media (max-width: 880px) {
+  .container { padding: 0 20px; }
+  .hero-content { grid-template-columns: 1fr; padding: 60px 32px; gap: 32px; }
+  .door-hanger { margin: 0 auto; transform: rotate(-2deg); }
+  .door-hanger-rod { display: none; }
+  .venue-body, .venue-body.reversed { grid-template-columns: 1fr; }
+  .venue-body.reversed .venue-photo { order: 0; border-left: none; border-bottom: 1px solid var(--brown-line); }
+  .venue-photo { border-right: none; border-bottom: 1px solid var(--brown-line); }
+  .events-grid { grid-template-columns: 1fr; }
+  .event-row { border-right: none; }
+  .event-row { grid-template-columns: 90px 1fr; }
+  .event-time { grid-column: 2; padding-top: 4px; }
+  .multi-block { grid-template-columns: 1fr; }
+  .multi-block-left { border-right: none; border-bottom: 1px solid var(--brown-line); }
+  .multi-block-section-body { grid-template-columns: 1fr; }
+  .there-grid { grid-template-columns: 1fr; }
+  .there-card { border-right: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .dark-band-grid { grid-template-columns: 1fr; }
+  .dark-band-grid > div { border-right: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================ TOP NAV ================ -->
+<header class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-brand">UNTITLED <span class="heart">♥</span></span>
+  </div>
+  <div class="topbar-logo-mark">U</div>
+  <div class="topbar-right">
+    <div class="menu-icon"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ================ HERO ================ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <span class="hero-side-tag">NOT YOUR USUAL HOTEL</span>
+  <div class="hero-content">
+    <h1 class="hero-title">UNCOMMON<br>THINGS TO DO</h1>
+    <div style="position: relative;">
+      <div class="door-hanger-rod"></div>
+      <div class="door-hanger">
+        <div class="door-hanger-title">UNTITLED</div>
+        <div class="door-hanger-message">Why leave?<br>Stay the<br>weekend</div>
+        <div class="door-hanger-tagline">Something<br>always happening</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-thick"></div>
+
+<!-- ================ UNCOMMON THINGS HERE — section divider ================ -->
+<div class="section-divider-bar">UNCOMMON THINGS HERE</div>
+
+<!-- ================ UNTITLED LOBBY CAFE ================ -->
+<section class="venue">
+  <div class="venue-header">
+    <h2 class="venue-title">UNTITLED LOBBY CAFÉ</h2>
+    <span class="time-pill">7am - 4pm</span>
+  </div>
+  <div class="venue-body">
+    <div class="venue-photo" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&auto=format');"></div>
+    <div class="venue-info">
+      <p class="venue-info-text">Complimentary breakfast<br>served 7am - 11am</p>
+      <div class="venue-arrows"><span>←</span><span>→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ UNLISTED ROOFTOP BAR (NEW!) ================ -->
+<section class="venue">
+  <div class="venue-header">
+    <h2 class="venue-title">UNLISTED ROOFTOP BAR</h2>
+    <span class="time-pill-row">
+      <span class="time-pill">Sun – Thu &nbsp;·&nbsp; 4pm - 11pm</span>
+      <span class="time-pill">Fri – Sat &nbsp;·&nbsp; 4pm - 1am</span>
+    </span>
+  </div>
+  <div class="venue-body reversed">
+    <div class="venue-info">
+      <p class="venue-info-text">A garden in the sky<br>above the Lower East Side</p>
+      <div class="venue-arrows"><span>←</span><span>→</span></div>
+    </div>
+    <div class="venue-photo" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&auto=format');"></div>
+  </div>
+</section>
+
+<!-- ================ UNTITLED GYM ================ -->
+<section class="venue">
+  <div class="venue-header">
+    <h2 class="venue-title">UNTITLED GYM</h2>
+    <span class="time-pill">24 hours · Reservation only</span>
+  </div>
+  <div class="venue-body">
+    <div class="venue-photo" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&auto=format');"></div>
+    <div class="venue-info">
+      <p class="venue-info-text">12th Floor<br>Reservation required</p>
+      <div class="venue-arrows"><span>←</span><span>→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ BOWERY GARDEN (renamed!) ================ -->
+<section class="venue">
+  <div class="venue-header">
+    <h2 class="venue-title">BOWERY GARDEN</h2>
+    <span class="time-pill">6am - 2am</span>
+  </div>
+  <div class="venue-body reversed">
+    <div class="venue-info">
+      <p class="venue-info-text">Accessible<br>through the café</p>
+      <div class="venue-arrows"><span>←</span><span>→</span></div>
+    </div>
+    <div class="venue-photo" style="background-image: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&auto=format');"></div>
+  </div>
+</section>
+
+<!-- ================ UNSCRIPTED INK ================ -->
+<section class="venue" style="padding-bottom: 64px;">
+  <div class="venue-header">
+    <h2 class="venue-title">UNSCRIPTED INK</h2>
+    <span class="time-pill">12pm - 8pm</span>
+  </div>
+  <div class="venue-body">
+    <div class="venue-photo" style="background-image: url('https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=1200&auto=format');"></div>
+    <div class="venue-info">
+      <p class="venue-info-text">In-house tattoo studio<br>Walk-ins welcome</p>
+      <div class="venue-arrows"><span>←</span><span>→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ SEASONAL EVENTS @ UNTITLED ================ -->
+<section class="events-section">
+  <div class="container">
+    <div class="events-header">
+      <div class="events-eyebrow">Spring 2026</div>
+      <h2 class="events-title">Seasonal Events at Untitled</h2>
+    </div>
+  </div>
+  <div class="container" style="padding: 0;">
+    <div class="events-grid">
+
+      <div class="event-row">
+        <div class="event-date">Apr 19<small>Saturday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Untitled Presents: Animal Instinct</div>
+          <div class="event-meta">w/ Calicho Arévalo</div>
+        </div>
+        <div class="event-time">6 – 11pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">May 7<small>Thursday</small></div>
+        <div class="event-detail">
+          <div class="event-name">BODA — Singles Mixer</div>
+          <div class="event-meta">Bored Of Dating Apps · Unlisted Rooftop</div>
+        </div>
+        <div class="event-time">7:30 – 11pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">May 15<small>Friday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Feel Good Friday — Human Design Workshop</div>
+          <div class="event-meta">w/ Nadia Quinn</div>
+        </div>
+        <div class="event-time">4 – 6pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">May 17<small>Sunday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Untitled Presents: Artist in Residence</div>
+          <div class="event-meta">Miki May</div>
+        </div>
+        <div class="event-time">6 – 11pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">May 26<small>Tuesday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Summer House Reunion Watch Party</div>
+          <div class="event-meta">Untitled Presents</div>
+        </div>
+        <div class="event-time">7 – 11pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">May 28<small>Thursday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Unwind Wellness Market</div>
+          <div class="event-meta">Across the property</div>
+        </div>
+        <div class="event-time">4 – 8pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">Jun 2<small>Tuesday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Rhythms × National Book Foundation</div>
+          <div class="event-meta">Summer Reading Adventures w/ Naima Coster</div>
+        </div>
+        <div class="event-time">6:30 – 10pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">Jun 5<small>Friday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Feel Good Friday — Human Design Workshop</div>
+          <div class="event-meta">w/ Nadia Quinn</div>
+        </div>
+        <div class="event-time">4 – 6pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">Jun 14<small>Sunday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Untitled Presents: Artist in Residence</div>
+          <div class="event-meta">Kelvin Morel</div>
+        </div>
+        <div class="event-time">6 – 11pm</div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">Jun 19<small>Friday</small></div>
+        <div class="event-detail">
+          <div class="event-name">Untangled Yoga &amp; Sunset Sound Bath</div>
+          <div class="event-meta">Feel Good Friday</div>
+        </div>
+        <div class="event-time">5 – 9pm</div>
+      </div>
+
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 32px; font-family: 'EB Garamond', serif; font-style: italic; color: var(--text-soft); font-size: 14px;">
+    + every Friday · <strong>Tattoos &amp; Taquila</strong> at Unscripted Ink · 5 – 8pm
+  </div>
+</section>
+
+<div class="divider-thick"></div>
+
+<!-- ================ UNCOMMON THINGS THERE — section divider ================ -->
+<div class="section-divider-bar">UNCOMMON THINGS THERE — SEASONAL HAPPENINGS OF NYC</div>
+
+<!-- ================ FEATURED EVENTS (BROWN BAND) ================ -->
+<section class="dark-band">
+  <div class="dark-band-title">Featured Spring Events</div>
+  <div class="dark-band-grid">
+    <div>
+      <strong style="font-family: 'EB Garamond', serif; font-style: italic; font-size: 17px;">420 Celebration</strong>
+      <div style="font-size: 12px; opacity: 0.75; margin-top: 2px;">at Mighty Lucky · April 20th — All Afternoon</div>
+    </div>
+    <div>
+      <strong style="font-family: 'EB Garamond', serif; font-style: italic; font-size: 17px;">Virtual Reali-Tea Live</strong>
+      <div style="font-size: 12px; opacity: 0.75; margin-top: 2px;">City Winery · April 29th — 7:30pm</div>
+    </div>
+    <div>
+      <strong style="font-family: 'EB Garamond', serif; font-style: italic; font-size: 17px;">Syttende Mai Celebration</strong>
+      <div style="font-size: 12px; opacity: 0.75; margin-top: 2px;">Kabin · May 17th</div>
+    </div>
+    <div>
+      <strong style="font-family: 'EB Garamond', serif; font-style: italic; font-size: 17px;">Must-See Broadway</strong>
+      <div style="font-size: 12px; opacity: 0.75; margin-top: 2px;">See full line-up below ↓</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ THERE GRID — categories ================ -->
+<section style="padding: 0;">
+  <div class="there-grid">
+
+    <div class="there-card">
+      <h3 class="there-card-title">Spring Into Self-Care</h3>
+      <ul class="there-card-list">
+        <li>Spencer's Day Spa</li>
+        <li>Forward Space</li>
+        <li>New York Pilates</li>
+        <li>Solidcore <em>· Nolita</em></li>
+      </ul>
+    </div>
+
+    <div class="there-card">
+      <h3 class="there-card-title">L.E.S. Live Music</h3>
+      <ul class="there-card-list">
+        <li>Spring Lounge</li>
+        <li>Saint Tuesday</li>
+        <li>Bowery Ballroom</li>
+        <li>Arlene's Grocery</li>
+        <li>Mercury Lounge</li>
+        <li>Bowery Palace</li>
+      </ul>
+    </div>
+
+    <div class="there-card">
+      <h3 class="there-card-title">Downtown Museums</h3>
+      <ul class="there-card-list">
+        <li>New Museum</li>
+        <li>Whitney Museum</li>
+        <li>Tenement Museum</li>
+        <li>The Wang Contemporary</li>
+      </ul>
+    </div>
+
+    <div class="there-card">
+      <h3 class="there-card-title">Street Art Stuff</h3>
+      <ul class="there-card-list">
+        <li>Mr. Fantastic's Concrete Jungle</li>
+        <li>MOSA — Museum of Street Art</li>
+        <li>Keith Haring at The Brant</li>
+        <li>Private Street Art Walking Tour</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================ MUST-SEE BROADWAY (DARK BAND) ================ -->
+<section class="dark-band">
+  <div class="dark-band-title">Must-See Broadway Shows</div>
+  <div class="dark-band-grid">
+    <div>The Rocky Horror Show</div>
+    <div>Cats: <em>The Jellicle Ball</em></div>
+    <div>Ragtime</div>
+    <div>Beaches the Musical</div>
+    <div style="grid-column: 1 / -1; text-align: center; font-family: 'EB Garamond', serif; font-style: italic; font-size: 18px;">Death Becomes Her</div>
+  </div>
+</section>
+
+<div class="divider-thick"></div>
+
+<!-- ================ DRINKS AND DINING ================ -->
+<div class="section-divider-bar">DRINKS AND DINING</div>
+
+<!-- DINNER + SECRET GARDEN -->
+<section class="multi-block">
+  <div class="multi-block-left">
+    <h3 class="multi-block-title">Dinner</h3>
+    <ul class="multi-block-list">
+      <li>Forsythia</li>
+      <li>Saigon Social</li>
+      <li>Bufon</li>
+      <li>Or'esh</li>
+      <li>The Wren</li>
+      <li>Fish Cheeks</li>
+    </ul>
+  </div>
+  <div class="multi-block-right">
+    <div class="multi-block-section">
+      <div class="multi-block-section-header">Secret Garden Drink Destinations</div>
+      <div class="multi-block-section-body">
+        <div>Pinky Swear</div>
+        <div>Unlisted Rooftop <em style="font-family: 'EB Garamond', serif; font-style: italic; color: var(--text-soft);">at Untitled</em></div>
+        <div>The Garden <em style="font-family: 'EB Garamond', serif; font-style: italic; color: var(--text-soft);">at The Standard</em></div>
+        <div>Craft + Carry</div>
+        <div>The Gallery Café <em style="font-family: 'EB Garamond', serif; font-style: italic; color: var(--text-soft);">at Untitled</em></div>
+        <div>Bonnie Vee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRUNCH + PRE-THEATER + VEGGIE -->
+<section class="multi-block">
+  <div class="multi-block-left">
+    <h3 class="multi-block-title">Brunch</h3>
+    <ul class="multi-block-list">
+      <li>Clinton Street Baking Company</li>
+      <li>Sadelle's</li>
+      <li>Hearth</li>
+      <li>Win Son Bakery</li>
+      <li>Noreetuh</li>
+    </ul>
+  </div>
+  <div class="multi-block-right">
+    <div class="multi-block-section">
+      <div class="multi-block-section-header">Pre-Theater Dining</div>
+      <div class="multi-block-section-body">
+        <div>The Modern Bar Room</div>
+        <div>Monkey Bar</div>
+        <div>The View</div>
+        <div>Victor's Cafe</div>
+        <div>Din Tai Fung</div>
+        <div>Bar Centrale</div>
+      </div>
+    </div>
+    <div class="multi-block-section">
+      <div class="multi-block-section-header">Veggie Delights</div>
+      <div class="multi-block-section-body">
+        <div>Spicy Moon</div>
+        <div>Dirty Candy</div>
+        <div>ABCV</div>
+        <div>Buddha Bodai</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRADUATION DINNERS BAND -->
+<section class="dark-band">
+  <div class="dark-band-title">Graduation Dinners</div>
+  <div class="dark-band-grid">
+    <div>Blue Hill</div>
+    <div>Union Square Café</div>
+    <div>Gramercy Tavern</div>
+    <div>Il Buco</div>
+    <div style="grid-column: 1 / -1; text-align: center; font-family: 'EB Garamond', serif; font-style: italic; font-size: 18px;">Wayan</div>
+  </div>
+</section>
+
+<div class="divider-thick"></div>
+
+<!-- ================ SHOPPING ================ -->
+<div class="section-divider-bar">SHOPPING</div>
+
+<section class="there-grid">
+  <div class="there-card">
+    <h3 class="there-card-title">Womenswear</h3>
+    <ul class="there-card-list">
+      <li>Female Form</li>
+      <li>Meg</li>
+      <li>Never Fully Dressed</li>
+    </ul>
+  </div>
+  <div class="there-card">
+    <h3 class="there-card-title">Menswear</h3>
+    <ul class="there-card-list">
+      <li>Rails NYC</li>
+      <li>Aimé Leon Dore</li>
+      <li>Decendant of Thieves</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================ TOURS ================ -->
+<section class="tours">
+  <h3 class="tours-title">Tours</h3>
+  <div class="tours-list">
+    <span>Like A Local Food Tours <em style="font-family: 'EB Garamond', serif; font-style: italic; color: var(--text-soft);">— Private &amp; Public</em></span>
+    <span>Sandwich Tours</span>
+    <span>Historic Neighborhood Walking Tour</span>
+  </div>
+  <p class="tours-cta">
+    To book tours, please email
+    <a href="mailto:concierge@untitledat3freeman.com">concierge@untitledat3freeman.com</a>
+  </p>
+</section>
+
+<!-- ================ "BETTER IN PERSON" ================ -->
+<section class="in-person">
+  <div class="in-person-mark">U</div>
+  <p class="in-person-text">Some things are better experienced in person.</p>
+  <a href="#" class="btn-outline-dark">This is one of them</a>
+</section>
+
+<!-- ================ TEAL BOOK CTA ================ -->
+<section class="book-cta">
+  <p class="book-cta-text">An Untitled Stay</p>
+  <a href="#" class="book-cta-btn">BOOK A ROOM</a>
+</section>
+
+<!-- ================ MAIN FOOTER ================ -->
+<footer class="footer-main">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>UNTITLED</h4>
+        <p>3 Freeman Alley<br>New York, NY 10002<br>United States</p>
+      </div>
+      <div class="footer-col">
+        <h4>NAVIGATION</h4>
+        <a href="#">Home</a>
+        <a href="#">Rooms</a>
+        <a href="#">Gallery</a>
+        <a href="#">Book</a>
+      </div>
+      <div class="footer-col">
+        <h4>INSIDE UNTITLED</h4>
+        <a href="#">Unscripted Rooftop</a>
+        <a href="#">Unlisted Tattoo</a>
+        <a href="#">Untitled Gallery</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Untitled at 3 Freeman Alley
+  </div>
+</footer>
+
+</body>
+</html>
